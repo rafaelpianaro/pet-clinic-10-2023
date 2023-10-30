@@ -3,6 +3,10 @@
 PHPSTAN
 composer require --dev nunomaduro/larastan
 
+FILAMENT
+composer require filament/filament:"^3.0-stable" -W
+php artisan filament:install --panels
+
 ## COMMANDS
 
 PINT
@@ -12,6 +16,15 @@ PHPSTAN
 ./vendor/bin/phpstan analyse --memory-limit=2g
 - Official [url](https://github.com/nunomaduro/larastan)
 - Works [url](https://github.com/nunomaduro/larastan/issues/312)
+
+FILAMENT
+php artisan make:filament-user
+
+
+## ACCESS
+Admin
+admin@email.com
+password
 
 
 
