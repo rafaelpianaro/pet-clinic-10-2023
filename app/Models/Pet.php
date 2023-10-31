@@ -11,6 +11,15 @@ class Pet extends Model
 {
     use HasFactory;
 
+    public $fillable = [
+        'name',
+        'date_of_birth',
+        'type',
+        'avatar',
+        'owner_id',
+        'owners',
+    ];
+
     public function owner(): BelongsTo
     {
         return $this->belongsTo(Owner::class);

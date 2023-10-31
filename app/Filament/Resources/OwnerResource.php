@@ -31,7 +31,7 @@ class OwnerResource extends Resource
                         ->required(),
                     Forms\Components\TextInput::make('phone')
                         ->tel()
-                        // ->mask(['999 999 999'])
+                        ->mask('999 999 999')
                         ->required(),
                 ])
             ]);
@@ -41,7 +41,15 @@ class OwnerResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('email')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('phone')
+                    ->sortable()
+                    ->searchable(),
             ])
             ->filters([
                 //
