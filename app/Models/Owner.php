@@ -10,6 +10,15 @@ class Owner extends Model
 {
     use HasFactory;
 
+    // set $unguarded for the fields
+    // protected static $unguarded = true;
+
+    public $fillable = [
+        'name',
+        'email',
+        'phone'
+    ];
+
     public function pets(): HasMany
     {
         return $this->hasMany(Pet::class);

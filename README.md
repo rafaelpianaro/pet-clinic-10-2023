@@ -26,6 +26,14 @@ Admin
 admin@email.com
 password
 
+## PHP | XDEBUG
+
+iniciar um servidor php
+php -S localhost:8085
+
+adicionando xdebug
+XDEBUG_MODE=debug php -S localhost:8085
+
 
 
 
