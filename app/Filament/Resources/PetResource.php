@@ -72,8 +72,16 @@ class PetResource extends Resource
                 Tables\Columns\ImageColumn::make('avatar')
                     ->circular(),
                 Tables\Columns\TextColumn::make('name')
-                ->sortable()
-                ->searchable(),
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('type')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('date_of_birth')
+                    ->date('M d Y')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('owner.name')
             ])
             ->filters([
                 //

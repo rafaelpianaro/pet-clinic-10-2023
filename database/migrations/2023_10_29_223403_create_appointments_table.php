@@ -17,6 +17,12 @@ return new class extends Migration
             $table->foreignId('pet_id')
                 ->constrained('pets')
                 ->cascadeOnDelete();
+            $table->date('date')->nullable();
+
+            $table->time('start');
+            $table->time('end');
+
+            $table->string('status')->default('created');
             $table->timestamps();
         });
     }
