@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Storage;
 use App\Enums\PetType;
 
 class PetResource extends Resource
@@ -27,6 +28,7 @@ class PetResource extends Resource
                 Forms\Components\Section::make([
                     Forms\Components\FileUpload::make('avatar')
                         ->image()
+                        ->directory('avatars')
                         ->imageEditor(),
                     Forms\Components\TextInput::make('name')
                         ->required(),
@@ -88,6 +90,10 @@ class PetResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->before(function (Pet $record) {
+                        Storage::delete('public/' . $record->avatar);
+                    })
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

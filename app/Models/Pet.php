@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Storage;
 use App\Enums\PetType;
 
 class Pet extends Model
@@ -24,6 +25,14 @@ class Pet extends Model
         'owner_id',
         'owners',
     ];
+
+    // Delete file from storage, I did the same in PetResource
+    // protected static function booted(): void
+    // {
+    //     self::deleted(function (Pet $petImage) {
+    //         Storage::disk('public')->delete($petImage->avatar);
+    //     });
+    // }
 
     public function owner(): BelongsTo
     {
