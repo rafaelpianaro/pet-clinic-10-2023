@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Storage;
 use App\Enums\PetType;
@@ -36,12 +37,17 @@ class Pet extends Model
 
     public function owner(): BelongsTo
     {
-        return $this->belongsTo(Owner::class);
+        return $this->belongsTo(User::class, 'owner_id');
     }
 
     public function appointments(): HasMany
     {
         return $this->hasMany(Appointment::class);
         // return $this->hasMany(Appointment::class, 'pet_id', 'id');
+    }
+
+    public function clinic(): BelongsToMany
+    {
+        return $this->belongsToMany(Clinic::class);
     }
 }
