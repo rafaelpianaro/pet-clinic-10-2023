@@ -4,7 +4,7 @@ namespace App\Enums;
 
 use Filament\Support\Contracts\HasLabel;
 
-enum PetType: string implements HasLabel 
+enum PetType: string implements HasLabel
 {
     case Cat = 'cat';
     case Dog = 'dog';
@@ -22,6 +22,6 @@ enum PetType: string implements HasLabel
             self::Fish => 'Fish',
         };
     }
-    
-    
+
+
 }

@@ -3,11 +3,10 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-Use App\Models\Clinic;
-Use App\Models\Appointment;
+use App\Models\Clinic;
+use App\Models\Appointment;
 
-return new class extends Migration
-{
+return new class () extends Migration {
     /**
      * Run the migrations.
      */

@@ -5,9 +5,7 @@ namespace Database\Seeders;
 use App\Models\Clinic;
 use App\Models\Role;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class ClinicSeeder extends Seeder
 {
@@ -16,10 +14,15 @@ class ClinicSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('clinics')->insert([
-            'name' => 'Clinic A'
+        Clinic::factory()
+            ->hasAttached(User::factory()->create([
+                'name' => 'Admin',
+                'email' => 'admin@email.com',
+                'role_id' => Role::whereName('admin')->first()->id,
+                'phone' => '5555551234'
+            ]))
+            ->create([
+                'name' => 'Default Clinic'
         ]);
-
-        Clinic::first()->users()->attach(1);
     }
 }

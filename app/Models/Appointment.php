@@ -11,7 +11,7 @@ use App\Enums\AppointmentStatus;
 class Appointment extends Model
 {
     use HasFactory;
-    
+
     public $fillable = [
         'pet_id',
         'slot_id',
@@ -25,7 +25,7 @@ class Appointment extends Model
     protected $casts = [
         'status' => AppointmentStatus::class
     ];
-    
+
     public function pet(): BelongsTo
     {
         return $this->belongsTo(Pet::class);

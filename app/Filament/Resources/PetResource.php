@@ -3,15 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PetResource\Pages;
-use App\Filament\Resources\PetResource\RelationManagers;
 use App\Models\Pet;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Storage;
 use App\Enums\PetType;
 
@@ -46,7 +43,7 @@ class PetResource extends Resource
                         //     'lizard' => 'Lizard'
                         // ])
                     Forms\Components\Select::make('owner_id')
-                        ->relationship('owner','name')
+                        ->relationship('owner', 'name')
                         ->native(false)
                         ->searchable()
                         ->preload()
@@ -104,14 +101,14 @@ class PetResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -119,5 +116,5 @@ class PetResource extends Resource
             'create' => Pages\CreatePet::route('/create'),
             'edit' => Pages\EditPet::route('/{record}/edit'),
         ];
-    }    
+    }
 }
